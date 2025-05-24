@@ -1,4 +1,3 @@
-```markdown
 # InsightIQ
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -108,4 +107,3 @@ We welcome contributions to InsightIQ! Please see the [CONTRIBUTING.md](CONTRIBU
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-```
