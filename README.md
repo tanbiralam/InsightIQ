@@ -10,17 +10,17 @@ InsightIQ is an innovative AI-powered platform designed to provide insightful da
 
 ## ✨ Features
 
-*   **AI-Driven Text Generation:** Utilizes OpenAI's `gpt-3.5-turbo` model to generate various creative text formats, including poems, code, scripts, emails, and letters.
-*   **AI Image Creation:** Generates stunning images from text prompts using Stable Diffusion via the Replicate API.
-*   **Real-time Support:** Implements `crisp-sdk-web` to provide instant support and chat functionalities for users.
-*   **Secure User Authentication:** Employs Clerk for robust user authentication and account management.
-*   **Seamless Payment Integration:** Integrates Stripe for handling payments, subscriptions, and secure transactions.
-*   **Responsive UI:** Offers a user-friendly experience across different devices through a responsive design.
-*   **Persistent Data Storage:** Leverages Prisma and PostgreSQL to store user data, preferences, and other application data efficiently.
+*   **AI-Driven Text Generation:** Generates diverse creative text formats (poems, code, scripts, emails, etc.) using OpenAI's `gpt-3.5-turbo` model, with rate limiting and error handling.
+*   **AI Image Creation:** Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including robust error management.
+*   **Real-time Support:** Offers instant support and chat functionalities for users with `crisp-sdk-web` integration.
+*   **Secure User Authentication:** Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
+*   **Seamless Payment Integration:** Integrates Stripe for secure transactions, subscriptions, and payment processing, along with webhook support for event handling.
+*   **Responsive UI:** Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components.
+*   **Persistent Data Storage:** Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and other application data.
 
 ## 📋 Prerequisites
 
-Before installing and running InsightIQ, ensure you have the following installed and configured:
+Before installing and running InsightIQ, ensure the following are installed and configured:
 
 1.  **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
 2.  **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
@@ -29,14 +29,14 @@ Before installing and running InsightIQ, ensure you have the following installed
 
 This project relies on the following npm packages:
 
-*   `@clerk/nextjs`: Provides user authentication.
-*   `@hookform/resolvers`: Enables form validation.
-*   `@prisma/client`: Offers database access.
-*   `openai`: Interacts with the OpenAI API.
+*   `@clerk/nextjs`: Provides user authentication features.
+*   `@hookform/resolvers`: Used for form validation with Zod schemas.
+*   `@prisma/client`: Provides a type-safe database client.
+*   `openai`: Allows interaction with the OpenAI API.
 *   `replicate`: Integrates Replicate's image generation models.
-*   `stripe`: Manages payment processing.
+*   `stripe`: Manages payment processing and subscriptions.
 *   `next`: Powers the Next.js framework.
-*   `typescript`: Ensures type safety.
+*   `typescript`: Ensures type safety throughout the application.
 
 ## 🚀 Installation
 
@@ -55,7 +55,7 @@ This project relies on the following npm packages:
 
 3.  **Configure environment variables:**
 
-    Create a `.env` file in the root directory.  Copy the contents from `.env.example` and fill in the necessary API keys and database connection details.
+    Create a `.env` file in the root directory. Copy the contents from `.env.example` (provided below) and fill in the necessary API keys and database connection details.
 
 4.  **Database setup with Prisma:**
 
@@ -70,7 +70,8 @@ This project relies on the following npm packages:
     ```bash
     npm run postinstall
     ```
-    This command, defined in `package.json`, runs `prisma generate` to create the Prisma client.
+
+    This command, defined in `package.json`, runs `prisma generate` to create the Prisma client, which is required for interacting with the database.
 
 6.  **Start the development server:**
 
@@ -82,8 +83,8 @@ This project relies on the following npm packages:
 
     *   Open your browser and navigate to `http://localhost:3000`.
     *   The InsightIQ application should be running.
-    *   Create an account and log in to ensure user authentication is functioning correctly.
-    *   Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file.
+    *   Create an account and log in to ensure user authentication is functioning correctly using Clerk.
+    *   Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file. Check the console for any errors related to missing or invalid API keys.
 
 ## 💻 Usage
 
@@ -209,20 +210,25 @@ async function main() {
 main();
 ```
 
-**3. Using Clerk for User Authentication (Server-Side):**
+**3. Using Clerk for User Authentication (Server-Side - Next.js API Route):**
 
 ```typescript
 import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const { userId } = auth();
+  try {
+    const { userId } = auth();
 
-  if (!userId) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    return NextResponse.json({ userId });
+  } catch (error) {
+    console.error("Clerk authentication error:", error);
+    return new NextResponse("Internal Server Error", { status: 500 });
   }
-
-  return NextResponse.json({ userId });
 }
 ```
 
@@ -254,7 +260,7 @@ main();
 
 ## ⚙️ Configuration
 
-Example `.env` file:
+Example `.env.example` file:
 
 ```
 DATABASE_URL="postgresql://user:password@host:5432/database?schema=public"
