@@ -1,4 +1,3 @@
-```markdown
 # InsightIQ 💡
 
 InsightIQ is an innovative AI-powered platform designed to provide insightful data analysis and streamline content generation. Leveraging Next.js, TypeScript, and powerful AI models from OpenAI and Replicate, InsightIQ delivers intelligent solutions and creative tools to its users.
@@ -325,4 +324,3 @@ We welcome contributions to InsightIQ! To contribute:
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
