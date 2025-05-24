@@ -1,4 +1,3 @@
-```markdown
 # InsightIQ 💡
 
 InsightIQ is a cutting-edge AI-powered application designed to provide insightful analysis and generate creative content. Built with Next.js, TypeScript, and powered by OpenAI, Replicate, and more, InsightIQ offers a seamless experience for users seeking intelligent solutions.
@@ -299,4 +298,3 @@ Contributions are welcome! Please follow these steps:
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
