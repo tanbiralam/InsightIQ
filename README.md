@@ -1,4 +1,4 @@
-```markdown
+
 # InsightIQ 🧠💡
 
 [![npm version](https://badge.fury.io/js/my-app.svg)](https://www.npmjs.com/package/my-app)
@@ -209,4 +209,3 @@ Contributions are welcome! Follow these guidelines:
 
 This project is licensed under the MIT License - see the
 [LICENSE](LICENSE) file for details.
-```
