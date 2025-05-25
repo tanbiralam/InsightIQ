@@ -1,6 +1,8 @@
-# InsightIQ 💡
+# InsightIQ 💡![alt text](image-url)| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |**bold text**
 
-InsightIQ is an AI-powered platform meticulously crafted to streamline content creation and deliver intelligent data analysis. Leveraging Next.js, TypeScript, and sophisticated AI models from OpenAI and Replicate, InsightIQ provides an array of creative tools and insightful solutions to its users.
+**InsightIQ**1.  is an AI-powered platform meticulously crafted to streamline content creation and deliver intelligent data analysis. Leveraging Next.js, TypeScript, and sophisticated AI models from OpenAI and Replicate, InsightIQ provides an array of creative tools and insightful solutions to its users.
 
 [![npm version](https://badge.fury.io/js/my-app.svg)](https://www.npmjs.com/package/my-app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
