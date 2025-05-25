@@ -1,4 +1,5 @@
-## InsightIQ 💡 
+## InsightIQ 💡
+
 
 InsightIQ is an AI-powered platform designed to streamline content generation and provide intelligent data analysis. Leveraging Next.js, TypeScript, and AI models from OpenAI and Replicate, InsightIQ offers creative tools and insightful solutions to its users.
 
@@ -7,82 +8,84 @@ InsightIQ is an AI-powered platform designed to streamline content generation an
 [![Build Status](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml/badge.svg)](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml)
 ![Primary Language](https://img.shields.io/github/languages/top/tanbiralam/InsightIQ)
 
+
 ## ✨ Features
 
-*   **AI-Driven Text Generation:** Generates creative text formats (poems, code, scripts, emails, etc.) using OpenAI's `gpt-3.5-turbo` model with rate limiting and error handling for robust performance.
-*   **AI Image Creation:** Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including comprehensive error management and status handling.
-*   **Real-time Support:** Offers instant support and chat functionalities using `crisp-sdk-web` for seamless user communication.
-*   **Secure User Authentication:** Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
-*   **Seamless Payment Integration:** Integrates Stripe for secure transactions, subscriptions, and payment processing, including webhook support for reliable event handling.
-*   **Responsive UI:** Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components for accessibility.
-*   **Persistent Data Storage:** Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and application data.
+
+* **AI-Driven Text Generation:** Generates creative text formats (poems, code, scripts, emails, etc.) using OpenAI's `gpt-3.5-turbo` model with rate limiting and error handling for robust performance.
+* **AI Image Creation:** Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including comprehensive error management and status handling.
+* **Real-time Support:** Offers instant support and chat functionalities using `crisp-sdk-web` for seamless user communication.
+* **Secure User Authentication:** Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
+* **Seamless Payment Integration:** Integrates Stripe for secure transactions, subscriptions, and payment processing, including webhook support for reliable event handling.
+* **Responsive UI:** Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components for accessibility.
+* **Persistent Data Storage:** Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and application data.
+
 
 ## 📋 Prerequisites
 
+
 Before installing and running InsightIQ, ensure the following are installed and configured:
 
-1.  **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
-2.  **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
-3.  **PostgreSQL:** A relational database - [https://www.postgresql.org/](https://www.postgresql.org/)
-4.  **Git:** For version control - [https://git-scm.com/](https://git-scm.com/)
+1. **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
+2. **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
+3. **PostgreSQL:** A relational database - [https://www.postgresql.org/](https://www.postgresql.org/)
+4. **Git:** For version control - [https://git-scm.com/](https://git-scm.com/)
 
 This project relies on the following npm packages:
 
-*   `@clerk/nextjs`: Provides user authentication features.
-*   `@hookform/resolvers`: Used for form validation with Zod schemas.
-*   `@prisma/client`: Provides a type-safe database client.
-*   `openai`: Allows interaction with the OpenAI API.
-*   `replicate`: Integrates Replicate's image generation models.
-*   `stripe`: Manages payment processing and subscriptions.
-*   `next`: Powers the Next.js framework.
-*   `typescript`: Ensures type safety throughout the application.
-*   `zod`: For schema validation.
+* `@clerk/nextjs`: Provides user authentication features.
+* `@hookform/resolvers`: Used for form validation with Zod schemas.
+* `@prisma/client`: Provides a type-safe database client.
+* `openai`: Allows interaction with the OpenAI API.
+* `replicate`: Integrates Replicate's image generation models.
+* `stripe`: Manages payment processing and subscriptions.
+* `next`: Powers the Next.js framework.
+* `typescript`: Ensures type safety throughout the application.
+* `zod`: For schema validation.
+
 
 ## 🚀 Installation
 
-1.  **Clone the repository:**
 
-    ```bash
+1. **Clone the repository:**
+bash
     git clone https://github.com/tanbiralam/InsightIQ.git
     cd InsightIQ
-2.  **Install dependencies:**
-
-    ```bash
+2. **Install dependencies:**
+bash
     npm install
-3.  **Configure environment variables:**
+3. **Configure environment variables:**
 
-    Create a `.env` file in the root directory. Copy the contents from `.env.example` (provided below) and fill in the necessary API keys and database connection details.
+Create a `.env` file in the root directory. Copy the contents from `.env.example` (provided below) and fill in the necessary API keys and database connection details.
 
-4.  **Database setup with Prisma:**
-
-    ```bash
+4. **Database setup with Prisma:**
+bash
     npx prisma migrate dev --name init
-    This command creates the database tables based on the schema defined in `prisma/schema.prisma`. Ensure your PostgreSQL database is running before executing this command.
+This command creates the database tables based on the schema defined in `prisma/schema.prisma`. Ensure your PostgreSQL database is running before executing this command.
 
-5.  **Generate Prisma Client:**
-
-    ```bash
+5. **Generate Prisma Client:**
+bash
     npm run postinstall
-    This command, defined in `package.json`, runs `prisma generate` to create the Prisma client, which is required for interacting with the database.
+This command, defined in `package.json`, runs `prisma generate` to create the Prisma client, which is required for interacting with the database.
 
-6.  **Start the development server:**
-
-    ```bash
+6. **Start the development server:**
+bash
     npm run dev
-7.  **Verify Installation:**
+7. **Verify Installation:**
 
-    *   Open your browser and navigate to `http://localhost:3000`.
-    *   The InsightIQ application should be running.
-    *   Create an account and log in to ensure user authentication is functioning correctly using Clerk.
-    *   Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file. Check the console for any errors related to missing or invalid API keys.
+* Open your browser and navigate to `http://localhost:3000`.
+* The InsightIQ application should be running.
+* Create an account and log in to ensure user authentication is functioning correctly using Clerk.
+* Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file. Check the console for any errors related to missing or invalid API keys.
+
 
 ## 💻 Usage
+
 
 Here are examples demonstrating how to utilize InsightIQ's functionalities:
 
 **1. Generating Text with OpenAI:**
-
-```typescript
+typescript
 import OpenAI from 'openai';
 
 // Load environment variables and validate the API key
@@ -144,11 +147,13 @@ async function main() {
 main();
 **2. Generating Images with Replicate:**
 
+
 # **3. Tanbir Alam**` tanbir.html`
 
-## 
 
-```typescript
+
+##
+typescript
 import Replicate from "replicate";
 
 // Validate environment variables
@@ -201,8 +206,7 @@ async function main() {
 
 main();
 **3. Using Clerk for User Authentication (Server-Side - Next.js API Route):**
-
-```typescript
+typescript
 import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
@@ -221,8 +225,7 @@ export async function GET() {
   }
 }
 **4. Prisma Client Usage Example:**
-
-```typescript
+typescript
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -246,55 +249,122 @@ async function main() {
 main();
 ## ⚙️ Configuration
 
+
 Example `.env.example` file:
 DATABASE_URL="postgresql://user:password@host:5432/database?schema=public"
+
+
 # PostgreSQL database connection URL.
+
+
+
 # Replace with your database credentials. Ensure strong passwords and secure access.
+
+
+
 # Example: postgresql://dbuser:securepassword@localhost:5432/mydatabase?schema=public
 
+
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Clerk Publishable Key (public). Obtain from your Clerk dashboard: https://dashboard.clerk.com/
+
+
+
 # This key is safe to expose in client-side code.
 
+
 CLERK_SECRET_KEY="sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Clerk Secret Key (private).  Retrieve from your Clerk dashboard. NEVER commit this to version control!
+
+
+
 # Treat this key like a password.  Store it securely and limit access.
 
+
 NEXT_PUBLIC_CLERK_SIGN_IN_URL="/sign-in"
+
+
 # The sign-in URL for Clerk.
 
+
 NEXT_PUBLIC_CLERK_SIGN_UP_URL="/sign-up"
+
+
 # The sign-up URL for Clerk.
 
+
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL="/"
+
+
 # Where to redirect users after successful sign-in.
 
+
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL="/"
+
+
 # Where to redirect users after successful sign-up.
 
+
 OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Your OpenAI API key. Get it from: https://platform.openai.com/account/api-keys.
+
+
+
 # Keep this key private and secure! Do not share or commit this to version control.
 
+
 REPLICATE_API_TOKEN="r8_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Your Replicate API token.  Obtain from: https://replicate.com/account/api-tokens.
+
+
+
 # Securely store and manage this token.
 
+
 STRIPE_API_KEY="sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Your Stripe API Secret Key (private). Get it from: https://dashboard.stripe.com/apikeys.
+
+
+
 # NEVER commit this key to version control! Handle with extreme care.
 
+
 NEXT_PUBLIC_STRIPE_PUBLIC_KEY="pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Your Stripe Public Key (public).  This key can be safely exposed.
 
+
 STRIPE_WEBHOOK_SECRET="whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+
 # Stripe Webhook Secret.  Used to verify incoming Stripe webhooks. NEVER commit this!
+
+
+
 # This secret is crucial for ensuring the integrity of Stripe webhook events.
 
+
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+
 # The URL of your application (used for Stripe webhooks, CORS, etc.).
-#  This should be the base URL where your application is deployed.
+
+
+
+# This should be the base URL where your application is deployed.
 ## 🤝 Contributinggg
+
 
 We welcome contributions to InsightIQ! To contribute:
 
@@ -304,6 +374,8 @@ We welcome contributions to InsightIQ! To contribute:
 4. Push your branch to your forked repository: `git push origin feature/your-feature-name`.
 5. Submit a pull request to the main branch of the original InsightIQ repository.
 
+
 ## 📄 License
+
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
