@@ -1,106 +1,106 @@
-## InsightIQ 💡
+# InsightIQ 💡
 
-
-InsightIQ is an AI-powered platform designed to streamline content generation and provide intelligent data analysis. Leveraging Next.js, TypeScript, and AI models from OpenAI and Replicate, InsightIQ offers creative tools and insightful solutions to its users.
+InsightIQ is an AI-powered platform meticulously crafted to streamline content creation and deliver intelligent data analysis. Leveraging Next.js, TypeScript, and sophisticated AI models from OpenAI and Replicate, InsightIQ provides an array of creative tools and insightful solutions to its users.
 
 [![npm version](https://badge.fury.io/js/my-app.svg)](https://www.npmjs.com/package/my-app)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml/badge.svg)](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml)
 ![Primary Language](https://img.shields.io/github/languages/top/tanbiralam/InsightIQ)
 
-
 ## ✨ Features
 
-
-* **AI-Driven Text Generation:** Generates creative text formats (poems, code, scripts, emails, etc.) using OpenAI's `gpt-3.5-turbo` model with rate limiting and error handling for robust performance.
-* **AI Image Creation:** Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including comprehensive error management and status handling.
-* **Real-time Support:** Offers instant support and chat functionalities using `crisp-sdk-web` for seamless user communication.
-* **Secure User Authentication:** Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
-* **Seamless Payment Integration:** Integrates Stripe for secure transactions, subscriptions, and payment processing, including webhook support for reliable event handling.
-* **Responsive UI:** Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components for accessibility.
-* **Persistent Data Storage:** Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and application data.
-
+*   **AI-Driven Text Generation:** Generate diverse creative text formats, including poems, code snippets, scripts, and emails, utilizing OpenAI's `gpt-3.5-turbo` model. Enhanced with rate limiting and robust error handling to ensure consistent performance.
+*   **AI Image Creation:** Create stunning visuals from text prompts using Stable Diffusion, seamlessly integrated with the Replicate API. Features comprehensive error management and real-time status updates for a fluid user experience.
+*   **Real-time Support:** Provide instant support and enhance user engagement through chat functionalities using `crisp-sdk-web`, ensuring seamless and immediate communication.
+*   **Secure User Authentication:** Implement Clerk for secure user authentication and comprehensive account management. Enjoy customizable sign-in and sign-up flows for a tailored user experience.
+*   **Seamless Payment Integration:** Integrate Stripe for secure transactions, subscription management, and efficient payment processing. Benefit from webhook support for reliable, real-time event handling.
+*   **Responsive UI:** Deliver a user-friendly experience across various devices with a responsive design built using Tailwind CSS and Radix UI components, ensuring accessibility and optimal viewing.
+*   **Persistent Data Storage:** Utilize Prisma and PostgreSQL for efficient and secure storage of user data, preferences, and application-specific information, ensuring data integrity and fast retrieval.
 
 ## 📋 Prerequisites
 
+Before installing and running InsightIQ, ensure the following are installed and correctly configured on your system:
 
-Before installing and running InsightIQ, ensure the following are installed and configured:
+1.  **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
+2.  **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
+3.  **PostgreSQL:** A relational database management system - [https://www.postgresql.org/](https://www.postgresql.org/)
+4.  **Git:** For effective version control - [https://git-scm.com/](https://git-scm.com/)
 
-1. **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
-2. **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
-3. **PostgreSQL:** A relational database - [https://www.postgresql.org/](https://www.postgresql.org/)
-4. **Git:** For version control - [https://git-scm.com/](https://git-scm.com/)
+This project relies on the following npm packages, as detailed in `package.json`:
 
-This project relies on the following npm packages:
-
-* `@clerk/nextjs`: Provides user authentication features.
-* `@hookform/resolvers`: Used for form validation with Zod schemas.
-* `@prisma/client`: Provides a type-safe database client.
-* `openai`: Allows interaction with the OpenAI API.
-* `replicate`: Integrates Replicate's image generation models.
-* `stripe`: Manages payment processing and subscriptions.
-* `next`: Powers the Next.js framework.
-* `typescript`: Ensures type safety throughout the application.
-* `zod`: For schema validation.
-
+*   `@clerk/nextjs`: Provides robust user authentication features.
+*   `@hookform/resolvers`: Used for form validation with Zod schemas for data integrity.
+*   `@prisma/client`: Offers a type-safe database client for secure data access.
+*   `openai`: Enables seamless interaction with the OpenAI API for text generation.
+*   `replicate`: Integrates Replicate's advanced image generation models.
+*   `stripe`: Manages payment processing and subscription services securely.
+*   `next`: Powers the Next.js framework for server-side rendering and routing.
+*   `typescript`: Ensures type safety throughout the application's codebase.
+*   `zod`: Provides schema validation for data consistency.
 
 ## 🚀 Installation
 
+Follow these steps to install and set up InsightIQ on your local machine:
 
-1. **Clone the repository:**
-bash
+1.  **Clone the repository:**
+
+    ```bash
     git clone https://github.com/tanbiralam/InsightIQ.git
     cd InsightIQ
-2. **Install dependencies:**
-bash
+2.  **Install dependencies:**
+
+    ```bash
     npm install
-3. **Configure environment variables:**
+3.  **Configure environment variables:**
 
-Create a `.env` file in the root directory. Copy the contents from `.env.example` (provided below) and fill in the necessary API keys and database connection details.
+    Create a `.env` file in the root directory. Copy the contents from the `.env.example` file (provided below) and fill in the necessary API keys and database connection details.
 
-4. **Database setup with Prisma:**
-bash
+4.  **Database setup with Prisma:**
+
+    ```bash
     npx prisma migrate dev --name init
-This command creates the database tables based on the schema defined in `prisma/schema.prisma`. Ensure your PostgreSQL database is running before executing this command.
+    This command creates the database tables based on the schema defined in `prisma/schema.prisma`. Ensure your PostgreSQL database is running before executing this command.
 
-5. **Generate Prisma Client:**
-bash
+5.  **Generate Prisma Client:**
+
+    ```bash
     npm run postinstall
-This command, defined in `package.json`, runs `prisma generate` to create the Prisma client, which is required for interacting with the database.
+    This command, defined in `package.json`, executes `prisma generate` to create the Prisma client, which is essential for interacting with the database.
 
-6. **Start the development server:**
-bash
+6.  **Start the development server:**
+
+    ```bash
     npm run dev
-7. **Verify Installation:**
+7.  **Verify Installation:**
 
-* Open your browser and navigate to `http://localhost:3000`.
-* The InsightIQ application should be running.
-* Create an account and log in to ensure user authentication is functioning correctly using Clerk.
-* Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file. Check the console for any errors related to missing or invalid API keys.
-
+    *   Open your web browser and navigate to `http://localhost:3000`.
+    *   The InsightIQ application should be running without any initial errors.
+    *   Create a new user account and log in to verify that the user authentication system powered by Clerk is functioning correctly.
+    *   Test the AI content generation and image generation features. Check the browser console for any errors related to missing or invalid API keys, and ensure that the features are functioning as expected.
 
 ## 💻 Usage
 
-
-Here are examples demonstrating how to utilize InsightIQ's functionalities:
+The following examples demonstrate how to effectively utilize InsightIQ's core functionalities:
 
 **1. Generating Text with OpenAI:**
-typescript
+
+```typescript
 import OpenAI from 'openai';
 
 // Load environment variables and validate the API key
 const apiKey = process.env.OPENAI_API_KEY;
 if (!apiKey) {
   console.error("Missing OPENAI_API_KEY environment variable.");
-  throw new Error("OPENAI_API_KEY is required.  Obtain from: https://platform.openai.com/account/api-keys");
+  throw new Error("OPENAI_API_KEY is required. Obtain from: https://platform.openai.com/account/api-keys");
 }
 
 const openai = new OpenAI({
   apiKey: apiKey,
+  dangerouslyAllowBrowser: true, // Only allow in the browser if you understand the security implications
 });
 
 // Function to generate text using OpenAI's chat completion API
-async function generateText(prompt: string): Promise<string | null> {
+async function generateText(prompt: string, retries = 3): Promise<string | null> {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -123,9 +123,14 @@ async function generateText(prompt: string): Promise<string | null> {
 
     // Implement retry logic for rate limiting errors
     if (error.status === 429) {
-      console.warn("Rate limit exceeded. Retrying after a delay...");
-      await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
-      return generateText(prompt); // Retry the request
+      if (retries > 0) {
+        console.warn(`Rate limit exceeded. Retrying after a delay... (Retries left: ${retries})`);
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
+        return generateText(prompt, retries - 1); // Retry the request
+      } else {
+        console.error("Max retries reached. Unable to generate text.");
+        return null;
+      }
     }
 
     return null; // Return null on failure
@@ -147,20 +152,14 @@ async function main() {
 main();
 **2. Generating Images with Replicate:**
 
-
-# **3. Tanbir Alam**` tanbir.html`
-
-
-
-##
-typescript
+```typescript
 import Replicate from "replicate";
 
 // Validate environment variables
 const replicateApiKey = process.env.REPLICATE_API_TOKEN;
 if (!replicateApiKey) {
   console.error("Missing REPLICATE_API_TOKEN environment variable.");
-  throw new Error("REPLICATE_API_TOKEN is required.  Obtain from: https://replicate.com/account/api-tokens");
+  throw new Error("REPLICATE_API_TOKEN is required. Obtain from: https://replicate.com/account/api-tokens");
 }
 
 const replicate = new Replicate({
@@ -168,7 +167,7 @@ const replicate = new Replicate({
 });
 
 // Function to generate an image from a text prompt using Replicate
-async function generateImage(prompt: string): Promise<string | null> {
+async function generateImage(prompt: string, retries = 3): Promise<string | null> {
   try {
     const output = await replicate.run(
       "stability-ai/stable-diffusion:db21e94d56c235a219f353e958e9c70ca896bd0b6fab2d247598a5aa39a95e83",
@@ -186,8 +185,13 @@ async function generateImage(prompt: string): Promise<string | null> {
       return null;
     }
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error generating image:", error);
+     if (retries > 0 && error.message.includes("RateLimitExceeded")) {
+            console.warn(`Replicate rate limit exceeded. Retrying after a delay... (Retries left: ${retries})`);
+            await new Promise(resolve => setTimeout(resolve, 10000)); // Wait 10 seconds
+            return generateImage(prompt, retries - 1);
+        }
     return null;
   }
 }
@@ -206,7 +210,8 @@ async function main() {
 
 main();
 **3. Using Clerk for User Authentication (Server-Side - Next.js API Route):**
-typescript
+
+```typescript
 import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
@@ -225,7 +230,8 @@ export async function GET() {
   }
 }
 **4. Prisma Client Usage Example:**
-typescript
+
+```typescript
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -249,133 +255,64 @@ async function main() {
 main();
 ## ⚙️ Configuration
 
-
 Example `.env.example` file:
 DATABASE_URL="postgresql://user:password@host:5432/database?schema=public"
-
-
 # PostgreSQL database connection URL.
-
-
-
 # Replace with your database credentials. Ensure strong passwords and secure access.
-
-
-
 # Example: postgresql://dbuser:securepassword@localhost:5432/mydatabase?schema=public
 
-
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
 # Clerk Publishable Key (public). Obtain from your Clerk dashboard: https://dashboard.clerk.com/
-
-
-
 # This key is safe to expose in client-side code.
 
-
 CLERK_SECRET_KEY="sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
-# Clerk Secret Key (private).  Retrieve from your Clerk dashboard. NEVER commit this to version control!
-
-
-
-# Treat this key like a password.  Store it securely and limit access.
-
+# Clerk Secret Key (private). Retrieve from your Clerk dashboard. NEVER commit this to version control!
+# Treat this key like a password. Store it securely and limit access.
 
 NEXT_PUBLIC_CLERK_SIGN_IN_URL="/sign-in"
-
-
 # The sign-in URL for Clerk.
 
-
 NEXT_PUBLIC_CLERK_SIGN_UP_URL="/sign-up"
-
-
 # The sign-up URL for Clerk.
 
-
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL="/"
-
-
 # Where to redirect users after successful sign-in.
 
-
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL="/"
-
-
 # Where to redirect users after successful sign-up.
 
-
 OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
 # Your OpenAI API key. Get it from: https://platform.openai.com/account/api-keys.
-
-
-
 # Keep this key private and secure! Do not share or commit this to version control.
 
-
 REPLICATE_API_TOKEN="r8_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
-# Your Replicate API token.  Obtain from: https://replicate.com/account/api-tokens.
-
-
-
+# Your Replicate API token. Obtain from: https://replicate.com/account/api-tokens.
 # Securely store and manage this token.
 
-
 STRIPE_API_KEY="sk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
 # Your Stripe API Secret Key (private). Get it from: https://dashboard.stripe.com/apikeys.
-
-
-
 # NEVER commit this key to version control! Handle with extreme care.
 
-
 NEXT_PUBLIC_STRIPE_PUBLIC_KEY="pk_test_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
-# Your Stripe Public Key (public).  This key can be safely exposed.
-
+# Your Stripe Public Key (public). This key can be safely exposed.
 
 STRIPE_WEBHOOK_SECRET="whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-
-# Stripe Webhook Secret.  Used to verify incoming Stripe webhooks. NEVER commit this!
-
-
-
+# Stripe Webhook Secret. Used to verify incoming Stripe webhooks. NEVER commit this!
 # This secret is crucial for ensuring the integrity of Stripe webhook events.
 
-
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
-
-
 # The URL of your application (used for Stripe webhooks, CORS, etc.).
-
-
-
 # This should be the base URL where your application is deployed.
-## 🤝 Contributinggg
+## 🤝 Contributing
 
+We warmly welcome contributions to InsightIQ! To contribute effectively, please follow these guidelines:
 
-We welcome contributions to InsightIQ! To contribute:
-
-1. Fork the repository on GitHub.
-2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name`.
-3. Make your changes and commit them with descriptive messages.
-4. Push your branch to your forked repository: `git push origin feature/your-feature-name`.
-5. Submit a pull request to the main branch of the original InsightIQ repository.
-
+1.  **Fork the repository:** Begin by forking the InsightIQ repository on GitHub to create your own copy.
+2.  **Create a new branch:** Create a dedicated branch for your feature or bug fix: `git checkout -b feature/your-feature-name`. This ensures a clean and organized workflow.
+3.  **Make your changes:** Implement your changes, ensuring that your code adheres to the project's coding standards. Write clear and concise commit messages to explain your changes.
+4.  **Push your branch:** Push your branch to your forked repository: `git push origin feature/your-feature-name`.
+5.  **Submit a pull request:** Submit a pull request to the main branch of the original InsightIQ repository. Provide a detailed description of your changes and the problem they solve.
 
 ## 📄 License
-
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
