@@ -294,7 +294,7 @@ STRIPE_WEBHOOK_SECRET="whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 # The URL of your application (used for Stripe webhooks, CORS, etc.).
 #  This should be the base URL where your application is deployed.
-## 🤝 Contributing
+## 🤝 Contributinggg
 
 We welcome contributions to InsightIQ! To contribute:
 
