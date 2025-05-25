@@ -1,146 +1,157 @@
-# InsightIQ 💡
-
-InsightIQ is an AI-powered platform that provides intelligent data analysis and streamlines content generation. Leveraging Next.js, TypeScript, and AI models from OpenAI and Replicate, InsightIQ offers creative tools and insightful solutions to its users.s
-
-[![npm version](https://badge.fury.io/js/my-app.svg)](https://www.npmjs.com/package/my-app)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://github.com/USERNAME/InsightIQ/actions/workflows/main.yml/badge.svg)](https://github.com/USERNAME/InsightIQ/actions/workflows/main.yml)
-![Primary Language](https://img.shields.io/github/languages/top/USERNAME/InsightIQ)
-
-## ✨ Features
-
-*   **AI-Driven Text Generation:** Generates creative text formats (poems, code, scripts, emails, etc.) using OpenAI's `gpt-3.5-turbo` model with rate limiting and error handling for robust performance.
-*   **AI Image Creation:** Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including comprehensive error management and status handling.
-*   **Real-time Support:** Offers instant support and chat functionalities using `crisp-sdk-web` for seamless user communication.
-*   **Secure User Authentication:** Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
-*   **Seamless Payment Integration:** Integrates Stripe for secure transactions, subscriptions, and payment processing, including webhook support for reliable event handling.
-*   **Responsive UI:** Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components for accessibility.
-*   **Persistent Data Storage:** Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and application data.
-
-## 📋 Prerequisites
-
-Before installing and running InsightIQ, ensure the following are installed and configured:
-
-1.  **Node.js:** (Version 18 or higher) - [https://nodejs.org/](https://nodejs.org/)
-2.  **npm:** (Comes with Node.js) - [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
-3.  **PostgreSQL:** A relational database - [https://www.postgresql.org/](https://www.postgresql.org/)
-4.  **Git:** For version control - [https://git-scm.com/](https://git-scm.com/)
-
-This project relies on the following npm packages:
-
-*   `@clerk/nextjs`: Provides user authentication features.
-*   `@hookform/resolvers`: Used for form validation with Zod schemas.
-*   `@prisma/client`: Provides a type-safe database client.
-*   `openai`: Allows interaction with the OpenAI API.
-*   `replicate`: Integrates Replicate's image generation models.
-*   `stripe`: Manages payment processing and subscriptions.
-*   `next`: Powers the Next.js framework.
-*   `typescript`: Ensures type safety throughout the application.
-
-## 🚀 Installation
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/USERNAME/InsightIQ.git
-    cd InsightIQ
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-3.  **Configure environment variables:**
-
-    Create a `.env` file in the root directory. Copy the contents from `.env.example` (provided below) and fill in the necessary API keys and database connection details.
-
-4.  **Database setup with Prisma:**
-
-    ```bash
-    npx prisma migrate dev --name init
-    This command creates the database tables based on the schema defined in `prisma/schema.prisma`. Ensure your PostgreSQL database is running before executing this command.
-
-5.  **Generate Prisma Client:**
-
-    ```bash
-    npm run postinstall
-    This command, defined in `package.json`, runs `prisma generate` to create the Prisma client, which is required for interacting with the database.
-
-6.  **Start the development server:**
-
-    ```bash
-    npm run dev
-7.  **Verify Installation:**
-
-    *   Open your browser and navigate to `http://localhost:3000`.
-    *   The InsightIQ application should be running.
-    *   Create an account and log in to ensure user authentication is functioning correctly using Clerk.
-    *   Test the AI content generation and image generation features after configuring the necessary API keys in the `.env` file. Check the console for any errors related to missing or invalid API keys.
-
-## 💻 Usage
-
-Here are examples demonstrating how to utilize InsightIQ's functionalities:
-
-**1. Generating Text with OpenAI:**
-
-```typescript
-import OpenAI from 'openai';
-
-// Load environment variables and validate the API key
-const apiKey = process.env.OPENAI_API_KEY;
-if (!apiKey) {
-  console.error("Missing OPENAI_API_KEY environment variable.");
-  throw new Error("OPENAI_API_KEY is required.  Obtain from: https://platform.openai.com/account/api-keys");
-}
-
-const openai = new OpenAI({
-  apiKey: apiKey,
-});
-
-// Function to generate text using OpenAI's chat completion API
-async function generateText(prompt: string): Promise<string | null> {
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
-      max_tokens: 200,
-      temperature: 0.7, // Adjust for creativity
-    });
-
-    const content = response.choices[0]?.message?.content;
-
-    if (!content) {
-      console.warn("No content returned from OpenAI.");
-      return null;
-    }
-
-    return content;
-
-  } catch (error: any) {
-    console.error("Error generating text:", error);
-
-    // Implement retry logic for rate limiting errors
-    if (error.status === 429) {
-      console.warn("Rate limit exceeded. Retrying after a delay...");
-      await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
-      return generateText(prompt); // Retry the request
-    }
-
-    return null; // Return null on failure
+- \# InsightIQ 💡
+- 
+  InsightIQ is an AI-powered platform designed to streamline content generation and provide intelligent data analysis. Leveraging Next.js, TypeScript, and AI models from OpenAI and Replicate, InsightIQ offers creative tools and insightful solutions to its users.
+  
+  \[!\[npm version\](https://badge.fury.io/js/my-app.svg)\](https://www.npmjs.com/package/my-app)
+  \[!\[License\](https://img.shields.io/badge/license-MIT-blue.svg)\](https://opensource.org/licenses/MIT)
+  \[!\[Build Status\](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml/badge.svg)\](https://github.com/tanbiralam/InsightIQ/actions/workflows/main.yml)
+  !\[Primary Language\](https://img.shields.io/github/languages/top/tanbiralam/InsightIQ)
+  
+  \## ✨ Features
+  
+  \*   \*\*AI-Driven Text Generation:\*\* Generates creative text formats (poems, code, scripts, emails, etc.) using OpenAI's \`gpt-3.5-turbo\` model with rate limiting and error handling for robust performance.
+  \*   \*\*AI Image Creation:\*\* Creates images from text prompts via Stable Diffusion, integrated with the Replicate API, including comprehensive error management and status handling.
+  \*   \*\*Real-time Support:\*\* Offers instant support and chat functionalities using \`crisp-sdk-web\` for seamless user communication.
+  \*   \*\*Secure User Authentication:\*\* Implements Clerk for secure user authentication and account management with customizable sign-in and sign-up flows.
+  \*   \*\*Seamless Payment Integration:\*\* Integrates Stripe for secure transactions, subscriptions, and payment processing, including webhook support for reliable event handling.
+  \*   \*\*Responsive UI:\*\* Provides a user-friendly experience on various devices using a responsive design built with Tailwind CSS and Radix UI components for accessibility.
+  \*   \*\*Persistent Data Storage:\*\* Uses Prisma and PostgreSQL for efficient storage of user data, preferences, and application data.
+  
+  \## 📋 Prerequisites
+  
+  Before installing and running InsightIQ, ensure the following are installed and configured:
+  
+  1\.  \*\*Node.js:\*\* (Version 18 or higher) - \[https://nodejs.org/\](https://nodejs.org/)
+  2\.  \*\*npm:\*\* (Comes with Node.js) - \[https://www.npmjs.com/get-npm\](https://www.npmjs.com/get-npm)
+  3\.  \*\*PostgreSQL:\*\* A relational database - \[https://www.postgresql.org/\](https://www.postgresql.org/)
+  4\.  \*\*Git:\*\* For version control - \[https://git-scm.com/\](https://git-scm.com/)
+  
+  This project relies on the following npm packages:
+  
+  \*   \`@clerk/nextjs\`: Provides user authentication features.
+  \*   \`@hookform/resolvers\`: Used for form validation with Zod schemas.
+  \*   \`@prisma/client\`: Provides a type-safe database client.
+  \*   \`openai\`: Allows interaction with the OpenAI API.
+  \*   \`replicate\`: Integrates Replicate's image generation models.
+  \*   \`stripe\`: Manages payment processing and subscriptions.
+  \*   \`next\`: Powers the Next.js framework.
+  \*   \`typescript\`: Ensures type safety throughout the application.
+  
+  \## 🚀 Installation
+  
+  1\.  \*\*Clone the repository:\*\*
+  
+      \`\`\`bash
+      git clone https://github.com/tanbiralam/InsightIQ.git
+      cd InsightIQ
+      \`\`\`
+  
+  2\.  \*\*Install dependencies:\*\*
+  
+      \`\`\`bash
+      npm install
+      \`\`\`
+  
+  3\.  \*\*Configure environment variables:\*\*
+  
+      Create a \`.env\` file in the root directory. Copy the contents from \`.env.example\` (provided below) and fill in the necessary API keys and database connection details.
+  
+  4\.  \*\*Database setup with Prisma:\*\*
+  
+      \`\`\`bash
+      npx prisma migrate dev --name init
+      \`\`\`
+  
+      This command creates the database tables based on the schema defined in \`prisma/schema.prisma\`. Ensure your PostgreSQL database is running before executing this command.
+  
+  5\.  \*\*Generate Prisma Client:\*\*
+  
+      \`\`\`bash
+      npm run postinstall
+      \`\`\`
+  
+      This command, defined in \`package.json\`, runs \`prisma generate\` to create the Prisma client, which is required for interacting with the database.
+  
+  6\.  \*\*Start the development server:\*\*
+  
+      \`\`\`bash
+      npm run dev
+      \`\`\`
+  
+  7\.  \*\*Verify Installation:\*\*
+  
+      \*   Open your browser and navigate to \`http://localhost:3000\`.
+      \*   The InsightIQ application should be running.
+      \*   Create an account and log in to ensure user authentication is functioning correctly using Clerk.
+      \*   Test the AI content generation and image generation features after configuring the necessary API keys in the \`.env\` file. Check the console for any errors related to missing or invalid API keys.
+  
+  \## 💻 Usage
+  
+  Here are examples demonstrating how to utilize InsightIQ's functionalities:
+  
+  \*\*1. Generating Text with OpenAI:\*\*
+  
+  \`\`\`typescript
+  import OpenAI from 'openai';
+  
+  // Load environment variables and validate the API key
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    console.error("Missing OPENAI_API_KEY environment variable.");
+    throw new Error("OPENAI_API_KEY is required.  Obtain from: https://platform.openai.com/account/api-keys");
   }
-}
-
-// Example usage of the generateText function
-async function main() {
-  const prompt = "Write a short limerick about a coding cat.";
-  const generatedPoem = await generateText(prompt);
-
-  if (generatedPoem) {
-    console.log("Generated Limerick:", generatedPoem);
-  } else {
-    console.log("Failed to generate limerick.");
+  
+  const openai = new OpenAI({
+    apiKey: apiKey,
+  });
+  
+  // Function to generate text using OpenAI's chat completion API
+  async function generateText(prompt: string): Promise&lt;string | null&gt; {
+    try {
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: \[{ role: "user", content: prompt }\],
+        max_tokens: 200,
+        temperature: 0.7, // Adjust for creativity
+      });
+  
+      const content = response.choices\[0\]?.message?.content;
+  
+      if (!content) {
+        console.warn("No content returned from OpenAI.");
+        return null;
+      }
+  
+      return content;
+  
+    } catch (error: any) {
+      console.error("Error generating text:", error);
+  
+      // Implement retry logic for rate limiting errors
+      if (error.status === 429) {
+        console.warn("Rate limit exceeded. Retrying after a delay...");
+        await new Promise(resolve =&gt; setTimeout(resolve, 5000)); // Wait 5 seconds
+        return generateText(prompt); // Retry the request
+      }
+  
+      return null; // Return null on failure
+    }
   }
-}
+  
+  // Example usage of the generateText function
+  async function main() {
+    const prompt = "Write a short limerick about a coding cat.";
+    const generatedPoem = await generateText(prompt);
+  
+    if (generatedPoem) {
+      console.log("Generated Limerick:", generatedPoem);
+    } else {
+      console.log("Failed to generate limerick.");
+    }
+  }
+  
+  main();
 
-main();
 **2. Generating Images with Replicate:**
 
 ```typescript
